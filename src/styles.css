@@ -132,13 +132,188 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+:root {
+  --radius: 1rem;
+  --background: oklch(0.99 0.008 85);
+  --foreground: oklch(0.15 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.65 0.21 42);
+  --primary-foreground: oklch(0.15 0 0);
+  --secondary: oklch(0.86 0.18 92);
+  --secondary-foreground: oklch(0.15 0 0);
+  --muted: oklch(0.96 0.012 80);
+  --muted-foreground: oklch(0.42 0.02 60);
+  --accent: oklch(0.55 0.23 29);
+  --accent-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.02 70);
+  --input: oklch(0.9 0.02 70);
+  --ring: oklch(0.65 0.21 42);
+  --ink: oklch(0.15 0 0);
+  --gradient-heat: linear-gradient(135deg, oklch(0.86 0.18 92), oklch(0.68 0.22 45) 55%, oklch(0.55 0.23 29));
+  --glow-warm: 0 0 60px color-mix(in oklab, oklch(0.68 0.22 45) 45%, transparent);
+  --shadow-lift: 0 24px 60px -24px color-mix(in oklab, oklch(0.55 0.23 29) 55%, transparent);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --font-display: "Outfit", sans-serif;
+  --font-sans: "Figtree", sans-serif;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility heat-text {
+  background: var(--gradient-heat);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility card-3d {
+  transform-style: preserve-3d;
+  transition:
+    transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.5s ease;
+  &:hover {
+    transform: perspective(1000px) rotateX(6deg) rotateY(-6deg) translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@utility photo-glow {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 90%,
+      color-mix(in oklab, oklch(0.86 0.18 92) 45%, transparent),
+      transparent 65%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+@utility shine {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      100deg,
+      transparent,
+      color-mix(in oklab, white 65%, transparent),
+      transparent
+    );
+    transform: skewX(-18deg);
+    transition: left 0.7s ease;
+  }
+  &:hover::before {
+    left: 130%;
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(2deg);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: var(--glow-warm);
+  }
+  50% {
+    box-shadow: 0 0 90px color-mix(in oklab, oklch(0.86 0.18 92) 55%, transparent);
+  }
+}
+
+@utility animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@utility animate-page-enter {
+  animation: page-enter 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@utility animate-pulse-glow {
+  animation: pulse-glow 3.5s ease-in-out infinite;
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
