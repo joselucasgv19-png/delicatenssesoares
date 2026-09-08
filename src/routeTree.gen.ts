@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CardapioRouteImport } from './routes/cardapio'
+import { Route as DeliciasRouteImport } from './routes/delicias'
+import { Route as LocalizacaoRouteImport } from './routes/localizacao'
+import { Route as ReservaRouteImport } from './routes/reserva'
+import { Route as SobreRouteImport } from './routes/sobre'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CardapioRoute = CardapioRouteImport.update({
+  id: '/cardapio',
+  path: '/cardapio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeliciasRoute = DeliciasRouteImport.update({
+  id: '/delicias',
+  path: '/delicias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocalizacaoRoute = LocalizacaoRouteImport.update({
+  id: '/localizacao',
+  path: '/localizacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReservaRoute = ReservaRouteImport.update({
+  id: '/reserva',
+  path: '/reserva',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cardapio': typeof CardapioRoute
+  '/delicias': typeof DeliciasRoute
+  '/localizacao': typeof LocalizacaoRoute
+  '/reserva': typeof ReservaRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cardapio': typeof CardapioRoute
+  '/delicias': typeof DeliciasRoute
+  '/localizacao': typeof LocalizacaoRoute
+  '/reserva': typeof ReservaRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cardapio': typeof CardapioRoute
+  '/delicias': typeof DeliciasRoute
+  '/localizacao': typeof LocalizacaoRoute
+  '/reserva': typeof ReservaRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/cardapio' | '/delicias' | '/localizacao' | '/reserva' | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/cardapio' | '/delicias' | '/localizacao' | '/reserva' | '/sobre'
+  id:
+    | '__root__'
+    | '/'
+    | '/cardapio'
+    | '/delicias'
+    | '/localizacao'
+    | '/reserva'
+    | '/sobre'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CardapioRoute: typeof CardapioRoute
+  DeliciasRoute: typeof DeliciasRoute
+  LocalizacaoRoute: typeof LocalizacaoRoute
+  ReservaRoute: typeof ReservaRoute
+  SobreRoute: typeof SobreRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cardapio': {
+      id: '/cardapio'
+      path: '/cardapio'
+      fullPath: '/cardapio'
+      preLoaderRoute: typeof CardapioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/delicias': {
+      id: '/delicias'
+      path: '/delicias'
+      fullPath: '/delicias'
+      preLoaderRoute: typeof DeliciasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/localizacao': {
+      id: '/localizacao'
+      path: '/localizacao'
+      fullPath: '/localizacao'
+      preLoaderRoute: typeof LocalizacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reserva': {
+      id: '/reserva'
+      path: '/reserva'
+      fullPath: '/reserva'
+      preLoaderRoute: typeof ReservaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CardapioRoute: CardapioRoute,
+  DeliciasRoute: DeliciasRoute,
+  LocalizacaoRoute: LocalizacaoRoute,
+  ReservaRoute: ReservaRoute,
+  SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
