@@ -12,4 +12,10 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    nitro: {
+      // Target Vercel Edge Functions for serverless SSR deployment.
+      preset: "vercel-edge",
+    },
+  },
 });
