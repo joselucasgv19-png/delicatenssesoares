@@ -1,15 +1,5 @@
 import { Coffee, Croissant, Heart, ShoppingBag, Sparkles, Star, Clock } from "lucide-react";
 
-import logo from "@/assets/logo.png.asset.json";
-import salaoA from "@/assets/restaurante3.jpg.asset.json";
-import salaoB from "@/assets/restaurante4.jpg.asset.json";
-import pao from "@/assets/ex1.jpg.asset.json";
-import tabua from "@/assets/ex2.jpg.asset.json";
-import sanduiche from "@/assets/ex3.jpg.asset.json";
-import boloFuba from "@/assets/ex4.jpg.asset.json";
-import cafePaoQueijo from "@/assets/ex5.jpg.asset.json";
-import boloPudim from "@/assets/ex6.jpg.asset.json";
-
 export const SITE_NAME = "Delicatensse Soares";
 export const SITE_URL = "https://delicatenssesoares.lovable.app";
 
