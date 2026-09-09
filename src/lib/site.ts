@@ -6,11 +6,23 @@ export const SITE_URL = "https://delicatenssesoares.lovable.app";
 export const WHATS =
   "https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20na%20Delicatensse%20Soares.";
 
-export const img = { logo, salaoA, salaoB, pao, tabua, sanduiche, boloFuba, cafePaoQueijo, boloPudim };
+const asset = (name: string) => ({ url: `/assets/${name}` });
+
+export const img = {
+  logo: asset("logo.png"),
+  salaoA: asset("restaurante3.jpg"),
+  salaoB: asset("restaurante4.jpg"),
+  pao: asset("ex1.jpg"),
+  tabua: asset("ex2.jpg"),
+  sanduiche: asset("ex3.jpg"),
+  boloFuba: asset("ex4.jpg"),
+  cafePaoQueijo: asset("ex5.jpg"),
+  boloPudim: asset("ex6.jpg"),
+};
 
 export const delicias = [
   {
-    img: pao.url,
+    img: img.pao.url,
     nome: "Pães Artesanais",
     desc: "Fermentação natural, casca crocante e miolo macio, assados todos os dias.",
   },
