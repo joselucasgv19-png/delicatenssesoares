@@ -27,12 +27,12 @@ export const delicias = [
     desc: "Fermentação natural, casca crocante e miolo macio, assados todos os dias.",
   },
   {
-    img: tabua.url,
+    img: img.tabua.url,
     nome: "Tábua da Casa",
     desc: "Queijos, frios selecionados, azeitonas e pães quentinhos para compartilhar.",
   },
   {
-    img: boloPudim.url,
+    img: img.boloPudim.url,
     nome: "Bolo Pudim",
     desc: "Camadas de pão de ló, doce de leite e pudim cremoso. Um clássico irresistível.",
   },
@@ -40,21 +40,21 @@ export const delicias = [
 
 export const maisPedidos = [
   {
-    img: cafePaoQueijo.url,
+    img: img.cafePaoQueijo.url,
     nome: "Café + Pão de Queijo",
     desc: "O combo que abre o dia com aconchego.",
     preco: "R$ 18,90",
     tag: "Mais vendido",
   },
   {
-    img: sanduiche.url,
+    img: img.sanduiche.url,
     nome: "Sanduíche Soares",
     desc: "Pão na chapa, bacon, queijo e salada fresca.",
     preco: "R$ 32,90",
     tag: "Favorito",
   },
   {
-    img: boloFuba.url,
+    img: img.boloFuba.url,
     nome: "Bolo de Fubá Cremoso",
     desc: "Receita de casa, feito na hora do lanche.",
     preco: "R$ 12,90",
