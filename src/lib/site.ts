@@ -61,7 +61,7 @@ export const maisPedidos = [
     tag: "Da vovó",
   },
   {
-    img: tabua.url,
+    img: img.tabua.url,
     nome: "Tábua para Dois",
     desc: "Perfeita para receber alguém especial.",
     preco: "R$ 79,90",
