@@ -1,36 +1,38 @@
 import { Coffee, Croissant, Heart, ShoppingBag, Sparkles, Star, Clock } from "lucide-react";
 
-import logo from "@/assets/logo.png.asset.json";
-import salaoA from "@/assets/restaurante3.jpg.asset.json";
-import salaoB from "@/assets/restaurante4.jpg.asset.json";
-import pao from "@/assets/ex1.jpg.asset.json";
-import tabua from "@/assets/ex2.jpg.asset.json";
-import sanduiche from "@/assets/ex3.jpg.asset.json";
-import boloFuba from "@/assets/ex4.jpg.asset.json";
-import cafePaoQueijo from "@/assets/ex5.jpg.asset.json";
-import boloPudim from "@/assets/ex6.jpg.asset.json";
-
 export const SITE_NAME = "Delicatensse Soares";
 export const SITE_URL = "https://delicatenssesoares.lovable.app";
 
 export const WHATS =
   "https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20na%20Delicatensse%20Soares.";
 
-export const img = { logo, salaoA, salaoB, pao, tabua, sanduiche, boloFuba, cafePaoQueijo, boloPudim };
+const asset = (name: string) => ({ url: `/assets/${name}` });
+
+export const img = {
+  logo: asset("logo.png"),
+  salaoA: asset("restaurante3.jpg"),
+  salaoB: asset("restaurante4.jpg"),
+  pao: asset("ex1.jpg"),
+  tabua: asset("ex2.jpg"),
+  sanduiche: asset("ex3.jpg"),
+  boloFuba: asset("ex4.jpg"),
+  cafePaoQueijo: asset("ex5.jpg"),
+  boloPudim: asset("ex6.jpg"),
+};
 
 export const delicias = [
   {
-    img: pao.url,
+    img: img.pao.url,
     nome: "Pães Artesanais",
     desc: "Fermentação natural, casca crocante e miolo macio, assados todos os dias.",
   },
   {
-    img: tabua.url,
+    img: img.tabua.url,
     nome: "Tábua da Casa",
     desc: "Queijos, frios selecionados, azeitonas e pães quentinhos para compartilhar.",
   },
   {
-    img: boloPudim.url,
+    img: img.boloPudim.url,
     nome: "Bolo Pudim",
     desc: "Camadas de pão de ló, doce de leite e pudim cremoso. Um clássico irresistível.",
   },
@@ -38,28 +40,28 @@ export const delicias = [
 
 export const maisPedidos = [
   {
-    img: cafePaoQueijo.url,
+    img: img.cafePaoQueijo.url,
     nome: "Café + Pão de Queijo",
     desc: "O combo que abre o dia com aconchego.",
     preco: "R$ 18,90",
     tag: "Mais vendido",
   },
   {
-    img: sanduiche.url,
+    img: img.sanduiche.url,
     nome: "Sanduíche Soares",
     desc: "Pão na chapa, bacon, queijo e salada fresca.",
     preco: "R$ 32,90",
     tag: "Favorito",
   },
   {
-    img: boloFuba.url,
+    img: img.boloFuba.url,
     nome: "Bolo de Fubá Cremoso",
     desc: "Receita de casa, feito na hora do lanche.",
     preco: "R$ 12,90",
     tag: "Da vovó",
   },
   {
-    img: tabua.url,
+    img: img.tabua.url,
     nome: "Tábua para Dois",
     desc: "Perfeita para receber alguém especial.",
     preco: "R$ 79,90",
