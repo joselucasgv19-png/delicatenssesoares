@@ -21,6 +21,20 @@ npm i
 npm run dev
 ```
 
+## Deploy na Vercel
+
+O projeto está configurado para gerar a saída de build no formato da Vercel.
+
+1. Conecte o repositório na Vercel.
+2. Use as configurações detectadas automaticamente ou defina:
+   - **Build Command:** `bun run build`
+   - **Install Command:** `bun install`
+   - **Output Directory:** `.vercel/output`
+   - **Framework Preset:** Other
+3. Faça o deploy.
+
+A pasta `.vercel/output` é gerada automaticamente pelo Nitro com o preset `vercel` e não deve ser commitada (já está no `.gitignore`).
+
 ## Built with
 
 - TanStack Start
