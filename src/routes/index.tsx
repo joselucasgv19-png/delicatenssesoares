@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 import { Reveal } from "@/components/Reveal";
-import { SITE_URL, img, delicias } from "@/lib/site";
+import { SITE_URL, canonicalUrl, img, delicias } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,6 +22,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: `${SITE_URL}${img.pao.url}` },
       { name: "twitter:image", content: `${SITE_URL}${img.pao.url}` },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/") }],
   }),
   component: Index,
 });

@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -35,7 +36,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -115,11 +116,34 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+const legacyRoutes = {
+  "#sobre": "/sobre",
+  "#delicias": "/delicias",
+  "#cardapio": "/cardapio",
+  "#depoimentos": "/depoimentos",
+  "#localizacao": "/localizacao",
+  "#faq": "/faq",
+  "#reserva": "/reserva",
+} as const;
+
+function LegacyHashRedirect() {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (window.location.pathname !== "/") return;
+    const target = legacyRoutes[window.location.hash as keyof typeof legacyRoutes];
+    if (target) void router.navigate({ to: target, replace: true });
+  }, [router]);
+
+  return null;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <LegacyHashRedirect />
       <div className="flex min-h-screen flex-col bg-background text-ink">
         <SiteHeader />
         <main className="flex-1">

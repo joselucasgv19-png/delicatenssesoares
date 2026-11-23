@@ -10,12 +10,13 @@ export function Reveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState<boolean>();
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
+    setVisible(false);
     const check = () => {
       const r = el.getBoundingClientRect();
       if (r.top < window.innerHeight * 0.92 && r.bottom > 0) {

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Reveal } from "@/components/Reveal";
-import { SITE_URL, img, delicias, maisPedidos } from "@/lib/site";
+import { SITE_URL, canonicalUrl, img, delicias, maisPedidos } from "@/lib/site";
 
 export const Route = createFileRoute("/delicias")({
   head: () => ({
@@ -20,6 +20,7 @@ export const Route = createFileRoute("/delicias")({
       { property: "og:image", content: `${SITE_URL}${img.boloPudim.url}` },
       { name: "twitter:image", content: `${SITE_URL}${img.boloPudim.url}` },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/delicias") }],
   }),
   component: Delicias,
 });

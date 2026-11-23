@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, MapPin, Phone } from "lucide-react";
 
 import { Reveal } from "@/components/Reveal";
-import { SITE_URL, WHATS, img } from "@/lib/site";
+import { SITE_URL, canonicalUrl, WHATS, img } from "@/lib/site";
 
 export const Route = createFileRoute("/localizacao")({
   head: () => ({
@@ -21,6 +21,7 @@ export const Route = createFileRoute("/localizacao")({
       { property: "og:image", content: `${SITE_URL}${img.salaoA.url}` },
       { name: "twitter:image", content: `${SITE_URL}${img.salaoA.url}` },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/localizacao") }],
   }),
   component: Localizacao,
 });
@@ -52,7 +53,9 @@ function Localizacao() {
               </li>
               <li className="flex gap-3">
                 <Phone className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                <span>(11) 99999-9999</span>
+                <a href="tel:+5511999999999" className="hover:text-primary">
+                  (11) 99999-9999
+                </a>
               </li>
             </ul>
             <div className="mt-8 flex flex-wrap gap-3">

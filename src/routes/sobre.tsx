@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Quote, Star } from "lucide-react";
-
 import { Reveal } from "@/components/Reveal";
-import { SITE_URL, img, motivos, depoimentos } from "@/lib/site";
+import { SITE_URL, canonicalUrl, img, motivos } from "@/lib/site";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
@@ -22,6 +20,7 @@ export const Route = createFileRoute("/sobre")({
       { property: "og:image", content: `${SITE_URL}${img.salaoA.url}` },
       { name: "twitter:image", content: `${SITE_URL}${img.salaoA.url}` },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/sobre") }],
   }),
   component: Sobre,
 });
@@ -116,27 +115,13 @@ function Sobre() {
           <h2 className="mt-3 font-display text-3xl font-black sm:text-5xl">
             Depoimentos de clientes
           </h2>
+          <Link
+            to="/depoimentos"
+            className="mt-8 inline-block rounded-full border border-ink px-7 py-4 font-display text-sm font-black uppercase tracking-wide transition-colors hover:bg-ink hover:text-background"
+          >
+            Ler os depoimentos
+          </Link>
         </Reveal>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {depoimentos.map((d, i) => (
-            <Reveal key={d.nome} delay={i * 110}>
-              <figure className="card-3d h-full rounded-3xl border border-border bg-card p-7">
-                <Quote className="h-7 w-7 text-primary" />
-                <blockquote className="mt-4 leading-relaxed text-muted-foreground">
-                  “{d.texto}”
-                </blockquote>
-                <figcaption className="mt-6 flex items-center gap-2">
-                  <span className="font-display font-black">{d.nome}</span>
-                  <span className="flex gap-0.5 text-secondary">
-                    {Array.from({ length: 5 }).map((_, s) => (
-                      <Star key={s} className="h-3.5 w-3.5 fill-current" />
-                    ))}
-                  </span>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
       </section>
     </div>
   );

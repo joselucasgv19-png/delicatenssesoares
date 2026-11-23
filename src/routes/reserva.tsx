@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CalendarCheck, Clock, MessageCircle, Users } from "lucide-react";
 
 import { Reveal } from "@/components/Reveal";
-import { SITE_URL, WHATS, img } from "@/lib/site";
+import { SITE_URL, canonicalUrl, WHATS, img } from "@/lib/site";
 
 export const Route = createFileRoute("/reserva")({
   head: () => ({
@@ -21,6 +21,7 @@ export const Route = createFileRoute("/reserva")({
       { property: "og:image", content: `${SITE_URL}${img.cafePaoQueijo.url}` },
       { name: "twitter:image", content: `${SITE_URL}${img.cafePaoQueijo.url}` },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/reserva") }],
   }),
   component: Reserva,
 });

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Reveal } from "@/components/Reveal";
-import { SITE_URL, img, cardapio } from "@/lib/site";
+import { SITE_URL, canonicalUrl, img, cardapio } from "@/lib/site";
 
 export const Route = createFileRoute("/cardapio")({
   head: () => ({
@@ -20,6 +20,7 @@ export const Route = createFileRoute("/cardapio")({
       { property: "og:image", content: `${SITE_URL}${img.tabua.url}` },
       { name: "twitter:image", content: `${SITE_URL}${img.tabua.url}` },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/cardapio") }],
   }),
   component: Cardapio,
 });

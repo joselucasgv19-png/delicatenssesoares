@@ -9,7 +9,9 @@ const nav = [
   { to: "/sobre", label: "Sobre" },
   { to: "/delicias", label: "Delícias" },
   { to: "/cardapio", label: "Cardápio" },
+  { to: "/depoimentos", label: "Depoimentos" },
   { to: "/localizacao", label: "Localização" },
+  { to: "/faq", label: "FAQ" },
 ] as const;
 
 export function SiteHeader() {
@@ -29,7 +31,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-semibold lg:flex">
+        <nav className="hidden items-center gap-5 text-sm font-semibold xl:flex">
           {nav.map((n) => (
             <Link
               key={n.to}
@@ -55,7 +57,7 @@ export function SiteHeader() {
             type="button"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             onClick={() => setOpen((v) => !v)}
-            className="rounded-full border border-border p-2.5 lg:hidden"
+            className="rounded-full border border-border p-2.5 xl:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -63,7 +65,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <nav className="border-t border-border/60 bg-background px-4 py-4 lg:hidden">
+        <nav className="border-t border-border/60 bg-background px-4 py-4 xl:hidden">
           <ul className="space-y-1 text-sm font-semibold">
             {nav.map((n) => (
               <li key={n.to}>
@@ -91,6 +93,28 @@ export function SiteHeader() {
           </ul>
         </nav>
       )}
+
+      <noscript>
+        <nav
+          aria-label="Navegação sem JavaScript"
+          className="border-t border-border/60 bg-background px-4 py-4 xl:hidden"
+        >
+          <ul className="flex flex-wrap gap-2 text-sm font-semibold">
+            {nav.map((n) => (
+              <li key={n.to}>
+                <Link to={n.to} className="block rounded-xl bg-muted px-3 py-2">
+                  {n.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link to="/reserva" className="block rounded-xl bg-muted px-3 py-2 font-black">
+                Reservar
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </noscript>
     </header>
   );
 }
@@ -138,7 +162,11 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2.5 text-sm text-background/75">
             <li>Rua das Oliveiras, 320 — Centro</li>
             <li>São Paulo/SP</li>
-            <li>(11) 99999-9999</li>
+            <li>
+              <a href="tel:+5511999999999" className="hover:text-secondary">
+                (11) 99999-9999
+              </a>
+            </li>
             <li>contato@delicatenssesoares.com.br</li>
           </ul>
         </div>

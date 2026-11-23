@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CardapioRouteImport } from './routes/cardapio'
 import { Route as DeliciasRouteImport } from './routes/delicias'
+import { Route as DepoimentosRouteImport } from './routes/depoimentos'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as LocalizacaoRouteImport } from './routes/localizacao'
 import { Route as ReservaRouteImport } from './routes/reserva'
 import { Route as SobreRouteImport } from './routes/sobre'
@@ -29,6 +31,16 @@ const CardapioRoute = CardapioRouteImport.update({
 const DeliciasRoute = DeliciasRouteImport.update({
   id: '/delicias',
   path: '/delicias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DepoimentosRoute = DepoimentosRouteImport.update({
+  id: '/depoimentos',
+  path: '/depoimentos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocalizacaoRoute = LocalizacaoRouteImport.update({
@@ -51,6 +63,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cardapio': typeof CardapioRoute
   '/delicias': typeof DeliciasRoute
+  '/depoimentos': typeof DepoimentosRoute
+  '/faq': typeof FaqRoute
   '/localizacao': typeof LocalizacaoRoute
   '/reserva': typeof ReservaRoute
   '/sobre': typeof SobreRoute
@@ -59,6 +73,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cardapio': typeof CardapioRoute
   '/delicias': typeof DeliciasRoute
+  '/depoimentos': typeof DepoimentosRoute
+  '/faq': typeof FaqRoute
   '/localizacao': typeof LocalizacaoRoute
   '/reserva': typeof ReservaRoute
   '/sobre': typeof SobreRoute
@@ -68,6 +84,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cardapio': typeof CardapioRoute
   '/delicias': typeof DeliciasRoute
+  '/depoimentos': typeof DepoimentosRoute
+  '/faq': typeof FaqRoute
   '/localizacao': typeof LocalizacaoRoute
   '/reserva': typeof ReservaRoute
   '/sobre': typeof SobreRoute
@@ -75,14 +93,31 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/cardapio' | '/delicias' | '/localizacao' | '/reserva' | '/sobre'
+    | '/'
+    | '/cardapio'
+    | '/delicias'
+    | '/depoimentos'
+    | '/faq'
+    | '/localizacao'
+    | '/reserva'
+    | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cardapio' | '/delicias' | '/localizacao' | '/reserva' | '/sobre'
+  to:
+    | '/'
+    | '/cardapio'
+    | '/delicias'
+    | '/depoimentos'
+    | '/faq'
+    | '/localizacao'
+    | '/reserva'
+    | '/sobre'
   id:
     | '__root__'
     | '/'
     | '/cardapio'
     | '/delicias'
+    | '/depoimentos'
+    | '/faq'
     | '/localizacao'
     | '/reserva'
     | '/sobre'
@@ -92,6 +127,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CardapioRoute: typeof CardapioRoute
   DeliciasRoute: typeof DeliciasRoute
+  DepoimentosRoute: typeof DepoimentosRoute
+  FaqRoute: typeof FaqRoute
   LocalizacaoRoute: typeof LocalizacaoRoute
   ReservaRoute: typeof ReservaRoute
   SobreRoute: typeof SobreRoute
@@ -118,6 +155,20 @@ declare module '@tanstack/react-router' {
       path: '/delicias'
       fullPath: '/delicias'
       preLoaderRoute: typeof DeliciasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/depoimentos': {
+      id: '/depoimentos'
+      path: '/depoimentos'
+      fullPath: '/depoimentos'
+      preLoaderRoute: typeof DepoimentosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/localizacao': {
@@ -148,6 +199,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CardapioRoute: CardapioRoute,
   DeliciasRoute: DeliciasRoute,
+  DepoimentosRoute: DepoimentosRoute,
+  FaqRoute: FaqRoute,
   LocalizacaoRoute: LocalizacaoRoute,
   ReservaRoute: ReservaRoute,
   SobreRoute: SobreRoute,

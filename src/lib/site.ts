@@ -3,6 +3,11 @@ import { Coffee, Croissant, Heart, ShoppingBag, Sparkles, Star, Clock } from "lu
 export const SITE_NAME = "Delicatensse Soares";
 export const SITE_URL = "https://delicatenssesoares.lovable.app";
 
+export function canonicalUrl(path: string) {
+  const pathname = path === "/" ? "/" : `/${path.replace(/^\/+|\/+$/g, "")}/`;
+  return new URL(pathname, SITE_URL).toString();
+}
+
 export const WHATS =
   "https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20na%20Delicatensse%20Soares.";
 
